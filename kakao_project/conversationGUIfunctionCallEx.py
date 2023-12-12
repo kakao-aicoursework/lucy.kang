@@ -22,31 +22,32 @@ def save_data():
     print('project_data_talk_channel 데이터를 읽어옵니다..')
 
     with open('./file/talk_channel.txt', 'r') as f:
-        talk_channel_data = f.read()
-        print(talk_channel_data)
+        sync_data = f.read()
+        print(sync_data)
 
     # 데이터를 읽어와서 데이터를 정형화한다.
     ids = []
     docs = []
 
-    for chunk in talk_channel_data.split("\n#")[2:]:
+    for chunk in sync_data.split("\n#")[2:]:
         title = chunk.split("\n")[0].replace(" ", "-").strip()
         data_type = 'talk_channel'
         _id = f"{data_type}-{title}"
         _doc = chunk.strip()
+        _doc = f"{_doc}"
 
         ids.append(_id)
         docs.append(_doc)
 
-    print(ids)
+
     print(docs)
+    print(ids)
 
     # 수정된 부분: collection 변수를 이용하여 데이터를 추가
-    collection.add(
-        documents=docs,
-        ids=ids
-    )
-
+    #collection.add(
+    #    documents=docs,
+    #    ids=ids,
+    #)
 
 # response에 CSV 형식이 있는지 확인하고 있으면 저장하기
 def save_to_csv(df):
@@ -57,6 +58,7 @@ def save_to_csv(df):
     return '저장을 취소했습니다'
 
 
+
 def get_data_from_chromadb(data_type, query, n_results=2):
     print("get data from chroma ...")
     results = collection.query(
@@ -64,7 +66,6 @@ def get_data_from_chromadb(data_type, query, n_results=2):
         n_results=n_results,
     )
     return results["documents"][0]
-
 
 def save_playlist_as_csv(playlist_csv):
     if ";" in playlist_csv:
@@ -225,7 +226,6 @@ def main():
 
     font = ("맑은 고딕", 10)
 
-
     conversation = scrolledtext.ScrolledText(window, wrap=tk.WORD, bg='#f0f0f0', font=font)
     # width, height를 없애고 배경색 지정하기(2)
     conversation.tag_configure("user", background="#c9daf8")
@@ -248,8 +248,8 @@ def main():
     window.mainloop()
 
 
-
 if __name__ == "__main__":
+    # 데이터를 저장
     save_data()
 
     main()
