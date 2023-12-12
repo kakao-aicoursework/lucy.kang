@@ -1,4 +1,6 @@
 import json
+import os
+
 import openai
 import tkinter as tk
 import pandas as pd
@@ -6,7 +8,7 @@ import chromadb
 from tkinter import scrolledtext
 import tkinter.filedialog as filedialog
 
-openai.api_key = ''
+openai.api_key = os.environ["API_KEY"]
 
 # ChromaDB에 연결
 client = chromadb.PersistentClient()
