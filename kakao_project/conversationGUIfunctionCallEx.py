@@ -1,6 +1,5 @@
 import json
 import os
-
 import openai
 import tkinter as tk
 import pandas as pd
@@ -19,38 +18,32 @@ collection = client.get_or_create_collection(
     metadata={
         "hnsw:space": "cosine"})  # "hnsw:space"라는 메타데이터 키를 사용하여 해당 컬렉션의 HNSW(하이 디멘전얼 스케일 유사도) 인덱스의 공간을 "cosine"으로 설정
 
-
 def save_data():
     print('project_data_talk_channel 데이터를 읽어옵니다..')
 
-    with open('./file/talk_channel.txt', 'r') as f:
-        sync_data = f.read()
-        print(sync_data)
+    data_types = ["project_data_channel", "project_data_social", "project_data_sync"]
 
-    # 데이터를 읽어와서 데이터를 정형화한다.
-    ids = []
-    docs = []
+    for data_type in data_types:
+        data = get_data(data_type)
 
-    for chunk in sync_data.split("\n#")[2:]:
-        title = chunk.split("\n")[0].replace(" ", "-").strip()
-        data_type = 'talk_channel'
-        _id = f"{data_type}-{title}"
-        _doc = chunk.strip()
-        _doc = f"{_doc}"
+        ids = []
+        docs = []
+        for chunk in data.split("\n#")[2:]:
+            title = chunk.split("\n")[0].replace(" ", "-").strip()
+            _id = f"{data_type}-{title}"
+            _doc = chunk.strip()
 
-        ids.append(_id)
-        docs.append(_doc)
+            ids.append(_id)
+            docs.append(_doc)
 
+    collection.add(
+        documents=docs,
+        ids=ids,
+    )
 
-    print(docs)
-    print(ids)
-
-    # 수정된 부분: collection 변수를 이용하여 데이터를 추가
-    #collection.add(
-    #    documents=docs,
-    #    ids=ids,
-    #)
-
+def get_data(data_type):
+    with open(f"file/{data_type}.txt", "r") as fin:
+        return fin.read()
 # response에 CSV 형식이 있는지 확인하고 있으면 저장하기
 def save_to_csv(df):
     file_path = filedialog.asksaveasfilename(defaultextension='.csv')
@@ -251,7 +244,7 @@ def main():
 
 
 if __name__ == "__main__":
+    print(openai.api_key)
     # 데이터를 저장
-    save_data()
-
-    main()
+    # save_data()
+    # main()
