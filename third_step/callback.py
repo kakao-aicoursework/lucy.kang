@@ -24,17 +24,16 @@ collection = db_client.get_or_create_collection(
     metadata={"hnsw:space": "cosine"}
 )
 '''
+
 1. 사용할 데이터(project_data_카카오소셜.txt, project_data_카카오싱크.txt, project_data_카카오톡채널.txt)를 preprocessing을 하여 사용한다.
 2. 데이터는 VectorDB에 업로드하여 사용한다.
 3. Embedding과 VectorDB를 사용하여 데이터 쿼리를 구성한다.
 4. LLM과 다양한 모듈을 위해 Langchain 또는 semantic-kernel 둘 중 하나를 사용한다.
+
 5. ChatMemory 기능을 사용하여 history를 가질 수 있게 구성한다.
 6. 서비스 형태는 카카오톡을 이용하여 구현한다.
 7. 최적화를 위해 외부 application을 이용하여 구현한다..(예: web search 기능)
 8. 다양한 prompt engineering 기법을 활용하여 최대한 일관성 있는 대답이 나오도록 유도한다.
-
-이거참고..
-https://github.com/kakao-aicoursework/finn.h/tree/main/llm_finn/third_step
 
 쿼리하는거는 내일 예제참고
 
