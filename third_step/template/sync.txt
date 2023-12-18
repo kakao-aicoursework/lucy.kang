@@ -1,0 +1,7 @@
+This is about Kakao sync response.
+
+<message>
+{input}
+</message>
+
+Answer:

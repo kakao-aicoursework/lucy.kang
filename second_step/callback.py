@@ -65,7 +65,7 @@ async def callback_handler(request: ChatbotRequest) -> dict:
 
     SYSTEM_MSG = "You are Provider for kakao corperation. Answer the question with context. response for korean"
 
-    test = collection.query(
+    quest = collection.query(
         query_texts=["what is kakao Sync's Procedure"],
         n_results=3,
     )
@@ -74,7 +74,7 @@ async def callback_handler(request: ChatbotRequest) -> dict:
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": SYSTEM_MSG},
-            {"role": "user", "content": f"{test}"},
+            {"role": "user", "content": f"{quest}"},
             {"role": "user", "content": request.userRequest.utterance}
         ],
         temperature=0,

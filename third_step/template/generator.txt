@@ -1,0 +1,11 @@
+Create a prompt that asks a detailed question about {target_topic}. The prompt should be one choice.
+The prompt should provide LLM with more information about {target_topic}.
+Organize {related_documents} to provide information about {target_topic}.
+The prompt should be written in Korean.
+
+<target_topic>
+{target_topic}
+</target_topic>
+<related_documents>
+{related_documents}
+</related_documents>

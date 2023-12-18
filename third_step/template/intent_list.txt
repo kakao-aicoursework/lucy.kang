@@ -1,0 +1,4 @@
+channel: Related to KakaoTalk channel with an existing feature
+social: Related to KakaoTalk social with an existing feature
+sync: Related to KakaoTalk sync with an existing feature
+question: A specific question about the codebase, product, project, or how to use a feature

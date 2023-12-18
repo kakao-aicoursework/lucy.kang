@@ -1,0 +1,7 @@
+This is about Kakao social response.
+
+<message>
+{input}
+</message>
+
+Answer:
