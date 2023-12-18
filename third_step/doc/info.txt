@@ -1,21 +1,4 @@
 #def query_web_search(user_message: str) -> str:
 
 
-
-# https://developers.google.com/custom-search/v1/overview?hl=ko
-# 프로그램 검색 엔진 제어판
-# 새 검색 엔진을 넣어주는것임
-'''
-c1c51394838eb417c 이런식으로 저장을 했음.
-
-https://cse.google.com/cse?cx=c1c51394838eb417c
-
-api key가 필요하다.
-AIzaSyA9C_ETxNuti7s-XKMz3k74oRccKPt7Ii4
-
-
-
-<script async src="https://cse.google.com/cse.js?cx=c1c51394838eb417c">
-</script>
-<div class="gcse-search"></div>
 '''
