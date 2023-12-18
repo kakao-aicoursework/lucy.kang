@@ -36,31 +36,6 @@ websearch하기를 붙이고
 memory기능 추가해서 hisotry기능을 추가한다.  
 '''
 
-"""
-search = GoogleSearchAPIWrapper(
-    google_api_key=os.getenv("GOOGLE_API_KEY","AIzaSyA9C_ETxNuti7s-XKMz3k74oRccKPt7Ii4"),
-    google_cse_id=os.getenv("GOOGLE_CSE_ID","c1c51394838eb417c")
-)
-
-search_tool = Tool(
-    name="Google Search",
-    description="Search Google for recent results.",
-    func=search.run,
-)
-
-def query_web_search(user_message: str) -> str:
-    context = {"user_message": user_message}
-    context["related_web_search_results"] = search_tool.run(user_message)
-
-    has_value = search_value_check_chain.run(context)
-
-    print(has_value)
-    if has_value == "Y":
-        return search_compression_chain.run(context)
-    else:
-        return ""
-"""
-
 
 async def callback_handler(request: ChatbotRequest) -> dict:
     # ===================== start =================================
